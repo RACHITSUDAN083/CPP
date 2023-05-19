@@ -1,0 +1,164 @@
+#include <iostream>
+#include <string>
+using namespace std;
+class student
+{
+public:
+
+    string rollno;
+    string name;
+    string dob;
+    string address;
+    string city;
+    int marks[];
+    void inputvalue()
+    {
+
+        cout << "Enter name of student: ";
+        cin >> name;
+        cout << "Enter rollno of student:";
+        cin >> rollno;
+        cout << "Enter student dob:";
+
+        cin >> dob;
+        cout << "Enter student address:";
+        cin >> address;
+        cout << "Enter student city: ";
+        cin >> city;
+        cout << "Enter the marks of three subject :";
+
+        for (int i = 0; i < 3; i++)
+        {
+            cin >> marks[i];
+            
+        }
+    }
+    void display()
+    {
+        cout << "Display student details" << endl;
+        cout << "Student name is :" << name << endl;
+        cout << "student roll no is :" << rollno << endl;
+        cout << "Student dob is :" << dob << endl;
+        cout << "student address is :" << address << endl;
+        cout << "student city is :" << city << endl;
+    }
+
+    void search()
+    {
+        string p;
+        cout << "Enter the roll no that you want to search: ";
+        cin >> p;
+        if (p == rollno)
+        {
+            cout << "Rollno is present in student management system " << endl;
+            cout << "Detail of student is :" <<endl;
+            cout << "Student name is :" << name << endl;
+            cout << "student roll no is :" << rollno << endl;
+            cout << "Student dob is :" << dob << endl;
+            cout << "student address is :" << address << endl;
+            cout << "student city is :" << city << endl;
+        }
+        else
+        {
+            cout << "Roll no is not present in student details" << endl;
+        }
+    }
+    void showresult()
+    {
+        string p;
+        float result;
+        int sum;
+        int i;
+        cout << "Enter the roll no which result you want to display:";
+        cin >> p;
+        if (p == rollno)
+        {
+            cout << "Marks of student in physics,math,computer : ";
+            for (int i = 0; i < 3; i++)
+            {
+                cout << marks[i] << endl;
+
+                sum = sum + marks[i];
+            }
+
+            result = (sum * 100) / 300;
+
+            cout << "Result of student is :" << result << "%" << endl;
+            if (result >= 90 && result <= 100)
+            {
+                cout << "Grade- A+" << endl;
+            }
+            else if (result >= 80 && result <= 89)
+
+            {
+                cout << "Grade- A" << endl;
+            }
+            else if (result >= 65 && result <= 79)
+
+            {
+                cout << "Grade- B" << endl;
+            }
+            else if (result >= 40 && result <= 64)
+            {
+
+                cout << "Grade : c" << endl;
+            }
+            else
+            {
+                cout << "Fail" << endl;
+            }
+        }
+    }
+        };
+        int main()
+        {
+            int n, i;
+            cout << "Enter the no of student: ";
+            cin >> n;
+
+            student s[n];
+            int choice;
+            cout<<"Which operation you want to perform"<<endl;
+            cout << "1.Insert value ";
+            cout << "2.Display value ";
+            cout << "3.Search ";
+            cout << "4.Show result "<<endl;
+            while (1)
+            {
+                cout << "Enter your choice :";
+                cin >> choice;
+
+                switch (choice)
+
+                {
+                case 1:
+                    for (i = 0; i < n; i++)
+                    {
+                        s[i].inputvalue();
+                    }
+                    break;
+                case 2:
+                    for (i = 0; i < n; i++)
+                    {
+                        s[i].display();
+                    }
+                    break;
+                case 3:
+                    for (i = 0; i < n; i++)
+                    {
+                        s[i].search();
+                    }
+                    break;
+                case 4:
+                    for (i = 0; i < n; i++)
+                    {
+                        s[i].showresult();
+                    }
+                    break;
+
+                        default : 
+                                  cout<< "invalid choice";
+                    break;
+                }
+            }
+        }
