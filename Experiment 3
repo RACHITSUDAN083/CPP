@@ -1,0 +1,99 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Student
+{
+private:
+    string name;
+    int age;
+    string address;
+
+public:
+    Student(string n, int a, string ad)
+    {
+        name = n;
+        age = a;
+        address = ad;
+    }
+    void updateDetails()
+    {
+        int option;
+        cout << "Which detail would you like to update?" << endl;
+        cout << "1. Name" << endl;
+        cout << "2. Age" << endl;
+        cout << "3. Address" << endl;
+        cout << "Enter option (1-3): ";
+        cin >> option;
+
+        switch (option)
+        {
+        case 1:
+            cout << "Enter new name: ";
+            cin >> name;
+            break;
+        case 2:
+            cout << "Enter new age: ";
+            cin >> age;
+            break;
+        case 3:
+            cout << "Enter new address: ";
+            cin >> address;
+            break;
+        default:
+            cout << "Invalid option. Please try again." << endl;
+            updateDetails();
+        }
+        cout << "Details updated successfully!" << endl;
+    }
+
+    void deleteDetails()
+    {
+        name = "";
+        age = 0;
+        address = "";
+        cout << "Details deleted successfully!" << endl;
+    }
+
+    void displayDetails()
+    {
+        cout << "Name: " << name << endl;
+        cout << "Age: " << age << endl;
+        cout << "Address: " << address << endl;
+    }
+};
+
+int main()
+{
+
+    Student student("Khan Amjid", 14, "123 Joanipur");
+
+    cout << "Initial details:" << endl;
+    student.displayDetails();
+
+    int option;
+    cout << "What would you like to do?" << endl;
+    cout << "1. Update student details" << endl;
+    cout << "2. Delete student details" << endl;
+    cout << "Enter option (1-2): ";
+    cin >> option;
+
+    switch (option)
+    {
+    case 1:
+        student.updateDetails();
+        break;
+    case 2:
+        student.deleteDetails();
+        break;
+    default:
+        cout << "Invalid option. Please try again." << endl;
+        main();
+    }
+
+    cout << "Final details:" << endl;
+    student.displayDetails();
+
+    return 0;
+}
